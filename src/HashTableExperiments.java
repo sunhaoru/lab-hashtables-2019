@@ -12,6 +12,20 @@ public class HashTableExperiments {
   // +-------------+
 
   /**
+   * A short experiment with getting a value from the hash table.
+   */
+  public static void getExpt(PrintWriter pen, HashTable<String, String> htab,
+      String key) {
+    pen.print("Getting " + key + " ... ");
+    pen.flush();
+    try {
+      pen.println(htab.get(key));
+    } catch (Exception e) {
+      pen.println("Failed because " + e);
+    } // try/catch
+  } // getExpt(PrintWriter, HashTable<String,String>, String)
+
+  /**
    * Explore what happens when we use set with a repeated key.
    */
   public static void repeatedSetExpt(PrintWriter pen,
@@ -26,14 +40,9 @@ public class HashTableExperiments {
       HashTable<String, String> htab) {
     pen.println("Setting anteater");
     htab.set("anteater", "anteater");
-    pen.print("Getting buffalo ... ");
-    pen.flush();
-    try {
-      pen.println(htab.get("buffalo"));
-    } catch (Exception e) {
-      pen.println("Failed because " + e);
-    } // try/catch
+    getExpt(pen, htab, "buffalo");
     htab.dump(pen);
+    pen.println();
   } // matchingKeysExpt(PrintWriter, HashTable)
 
   /**
@@ -63,11 +72,12 @@ public class HashTableExperiments {
           } // if we didn't get the expected value.
         } catch (Exception e) {
           pen.println("After setting " + words[i] + ", " + words[j]
-              + " is no longer in the htabionary.");
+              + " is no longer in the table.");
           return;
         } // try/catch
       } // for j
     } // for i
+    pen.println();
   } // setExpt(PrintWriter, HashTable)
 
   /**
