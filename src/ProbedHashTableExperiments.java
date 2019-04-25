@@ -27,7 +27,7 @@ public class ProbedHashTableExperiments {
         new ProbedHashTable<String, String>(rept);
 
     // Most of the time, we don't care about the basic calls
-    htab.reportBasicCalls(true);
+    htab.reportBasicCalls(false);
 
     // Conduct some of the experiments
     HashTableExperiments.repeatedSetExpt(pen, htab);
