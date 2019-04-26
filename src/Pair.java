@@ -29,6 +29,34 @@ public class Pair<K, V> {
     this.value = value;
   } // Pair(K,V)
 
+  // +------------------+--------------------------------------------
+  // | Standard methods |
+  // +------------------+
+
+  /**
+   * Compare for equality.
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean equals(Object other) {
+    return ((other instanceof Pair) && (this.equals((Pair<K,V>) other)));
+  } // equals(Object)
+
+  /**
+   * Compare for equality.
+   */
+  public boolean equals(Pair<K,V> other) {
+    return ((this.key.equals(other.key)) && (this.value.equals(other.value)));
+  } // equals(Pair<K,V>)
+
+  /**
+   * Convert to string form.
+   */
+  @Override
+  public String toString() {
+    return "<" + key + ":" + value + ">";
+  } // toString()
+
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
