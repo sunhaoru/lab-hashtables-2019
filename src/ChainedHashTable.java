@@ -308,17 +308,12 @@ public class ChainedHashTable<K, V> implements HashTable<K, V> {
    * Expand the size of the table.
    */
   void expand() {
-    // Figure out the size of the new table.
+    // Figure out the size of the new table
     int newSize = 2 * this.buckets.length + rand.nextInt(10);
     if (REPORT_BASIC_CALLS && (reporter != null)) {
       reporter.report("Expanding to " + newSize + " elements.");
     } // if reporter != null
-    // Create a new table of that size.
-    Object[] newPairs = new Object[newSize];
-    // Move all pairs from the old table to their appropriate
-    // location in the new table.
     // STUB
-    // And update our pairs
   } // expand()
 
   /**
