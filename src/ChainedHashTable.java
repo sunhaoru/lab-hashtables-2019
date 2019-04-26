@@ -271,22 +271,17 @@ public class ChainedHashTable<K, V> implements HashTable<K, V> {
    */
   @Override
   public void dump(PrintWriter pen) {
-    pen.print("{");
-    int printed = 0; // Number of elements printed
+    pen.println("Capacity: " + this.buckets.length + ", Size: " + this.size);
     for (int i = 0; i < this.buckets.length; i++) {
       @SuppressWarnings("unchecked")
       ArrayList<Pair<K, V>> alist = (ArrayList<Pair<K, V>>) this.buckets[i];
       if (alist != null) {
         for (Pair<K, V> pair : alist) {
-          pen.print(i + ":" + pair.key() + "(" + pair.key().hashCode() + "):"
-              + pair.value());
-          if (++printed < this.size) {
-            pen.print(", ");
-          } // if
+          pen.println("  " + i + ": <" + pair.key() + "(" + pair.key().hashCode()
+              + "):" + pair.value() + ">");
         } // for each pair in the bucket
       } // if the current bucket is not null
     } // for each bucket
-    pen.println("}");
   } // dump(PrintWriter)
 
   // +------+------------------------------------------------------------
