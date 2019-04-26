@@ -1,12 +1,27 @@
 import java.io.PrintWriter;
 
 /**
- * A simple set of experimetns using our new hash tables.
+ * A simple set of experiments using our new hash tables.
  *
  * @author Samuel A. Rebelsky
  * @author Your Name Here
  */
 public class HashTableExperiments {
+
+  // +--------+------------------------------------------------------
+  // | Fields |
+  // +--------+
+
+  /**
+   * A word list stolen from some tests that SamR wrote in the distant past.
+   */
+  static String[] words = {"aardvark", "anteater", "antelope", "bear", "bison",
+      "buffalo", "chinchilla", "cat", "dingo", "elephant", "eel",
+      "flying squirrel", "fox", "goat", "gnu", "goose", "hippo", "horse",
+      "iguana", "jackalope", "kestrel", "llama", "moose", "mongoose", "nilgai",
+      "orangutan", "opossum", "red fox", "snake", "tarantula", "tiger",
+      "vicuna", "vulture", "wombat", "yak", "zebra", "zorilla"};
+
   // +-------------+-----------------------------------------------------
   // | Experiments |
   // +-------------+
@@ -14,7 +29,7 @@ public class HashTableExperiments {
   /**
    * A short experiment with getting a value from the hash table.
    */
-  public static void getExpt(PrintWriter pen, HashTable<String, String> htab,
+  public static void checkGet(PrintWriter pen, HashTable<String, String> htab,
       String key) {
     pen.print("Getting " + key + " ... ");
     pen.flush();
@@ -23,7 +38,7 @@ public class HashTableExperiments {
     } catch (Exception e) {
       pen.println("Failed because " + e);
     } // try/catch
-  } // getExpt(PrintWriter, HashTable<String,String>, String)
+  } // checkGet(PrintWriter, HashTable<String,String>, String)
 
   /**
    * Explore what happens when we use set with a repeated key.
@@ -40,23 +55,32 @@ public class HashTableExperiments {
       HashTable<String, String> htab) {
     pen.println("Setting anteater");
     htab.set("anteater", "anteater");
-    getExpt(pen, htab, "buffalo");
+    checkGet(pen, htab, "anteater");
+    checkGet(pen, htab, "buffalo");
     htab.dump(pen);
     pen.println();
   } // matchingKeysExpt(PrintWriter, HashTable)
 
   /**
+   * Explore what happens when we use two keys that map to the same location.
+   */
+  public static void matchingSetExpt(PrintWriter pen,
+      HashTable<String, String> htab) {
+    pen.println("Setting anteater");
+    htab.set("anteater", "anteater");
+    htab.set("buffalo", "buffalo");
+    checkGet(pen, htab, "anteater");
+    checkGet(pen, htab, "buffalo");
+    htab.dump(pen);
+    pen.println();
+  } // matchingSetExpt(PrintWriter, HashTable)
+
+  /**
    * Explore what happens when we use set with a wide variety of key/value
    * pairs.
    */
-  public static void setExpt(PrintWriter pen, HashTable<String, String> htab) {
-    // Word list stolen from some unit test that SamR` wrote earlier.
-    String[] words = {"aardvark", "anteater", "antelope", "bear", "bison",
-        "buffalo", "chinchilla", "cat", "dingo", "elpehant", "eel",
-        "flying squirrel", "fox", "goat", "gnu", "goose", "hippo", "horse",
-        "iguana", "jackalope", "kestrel", "llama", "moose", "mongoose",
-        "nilgai", "orangutan", "opossum", "red fox", "snake", "tarantula",
-        "tiger", "vicuna", "vulture", "wombat", "yak", "zebra", "zorilla"};
+  public static void multipleSetExpt(PrintWriter pen,
+      HashTable<String, String> htab) {
     int numwords = words.length;
     for (int i = 0; i < numwords; i++) {
       // htab.dump(pen);
@@ -77,8 +101,9 @@ public class HashTableExperiments {
         } // try/catch
       } // for j
     } // for i
+    htab.dump(pen);
     pen.println();
-  } // setExpt(PrintWriter, HashTable)
+  } // multipleSetExpt(PrintWriter, HashTable)
 
   /**
    * Explore what happens when we remove elements.
