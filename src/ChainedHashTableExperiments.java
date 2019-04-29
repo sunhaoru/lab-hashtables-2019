@@ -23,8 +23,7 @@ public class ChainedHashTableExperiments {
     }; // new Reporter()
 
     // Create a new hash table
-    ChainedHashTable<String, String> htab =
-        new ChainedHashTable<String, String>(rept);
+    ChainedHashTable<String, String> htab = new ChainedHashTable<String, String>(rept);
 
     // Most of the time, we don't care about the basic calls
     htab.reportBasicCalls(false);
@@ -33,7 +32,7 @@ public class ChainedHashTableExperiments {
     // HashTableExperiments.matchingKeysExpt(pen, htab);
     // HashTableExperiments.repeatedSetExpt(pen, htab);
     // HashTableExperiments.matchingSetExpt(pen, htab);
-    // HashTableExperiments.multipleSetExpt(pen, htab);
+    HashTableExperiments.multipleSetExpt(pen, htab);
     // HashTableExperiments.removeExpt(pen, htab);
   } // main(String[])
 

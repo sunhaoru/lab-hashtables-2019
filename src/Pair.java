@@ -15,7 +15,7 @@ public class Pair<K, V> {
   /**
    * The associated value.
    */
-  private V value;
+  public V value;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -39,13 +39,13 @@ public class Pair<K, V> {
   @SuppressWarnings("unchecked")
   @Override
   public boolean equals(Object other) {
-    return ((other instanceof Pair) && (this.equals((Pair<K,V>) other)));
+    return ((other instanceof Pair) && (this.equals((Pair<K, V>) other)));
   } // equals(Object)
 
   /**
    * Compare for equality.
    */
-  public boolean equals(Pair<K,V> other) {
+  public boolean equals(Pair<K, V> other) {
     return ((this.key.equals(other.key)) && (this.value.equals(other.value)));
   } // equals(Pair<K,V>)
 
