@@ -332,7 +332,9 @@ public class ChainedHashTable<K, V> implements HashTable<K, V> {
       if (oldBuckets[i] != null) {
         for (Pair<K, V> data : (ArrayList<Pair<K, V>>) oldBuckets[i]) {
           int index = find(data.key());
-          this.buckets[index] = new ArrayList<Pair<K, V>>();
+          if (this.buckets[index] == null) {
+            this.buckets[index] = new ArrayList<Pair<K, V>>();
+          } // if
           ((ArrayList<Pair<K, V>>) this.buckets[index]).add(data);
         } // for
       } // if
